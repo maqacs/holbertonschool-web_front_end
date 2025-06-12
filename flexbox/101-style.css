@@ -1,0 +1,74 @@
+:root {
+    --size-box-1-5-width : 120px;
+    --size-box-2-4-width : 200px;
+    --size-box-3-width : 400px;
+
+    --size-box-1-5-height : 90px;
+    --size-box-2-4-height : 150px;
+    --size-box-3-height : 300px;
+
+    --font-size-box-1-5 : 1.5rem;
+    --font-size-box-2-4 : 3.5rem;
+    --font-size-box-3 : 8.5rem;
+
+    --color-box-1 : rgb(15, 211, 15);
+    --color-box-2 : rgb(76, 147, 253);
+    --color-box-3 : rgb(32, 41, 46);
+    --color-box-4 : rgb(109, 18, 109);
+    --color-box-5 : rgb(230, 125, 34);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transform: translateY(-30%);
+}
+
+.box {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.box1 {
+    flex: 0 0 var(--size-box-1-5-width);
+    height: var(--size-box-1-5-height);
+    font-size: var(--font-size-box-1-5);
+    background-color: var(--color-box-1);
+    transform: translateY(60%);
+}
+
+.box2 {
+    flex: 0 0 var(--size-box-2-4-width);
+    height: var(--size-box-2-4-height);
+    font-size: var(--font-size-box-2-4);
+    background-color: var(--color-box-2);
+    transform: translateY(30%);
+}
+
+.box3 {
+  flex: 0 0 var(--size-box-3-width);
+  height: var(--size-box-3-height);
+  font-size: var(--font-size-box-3);
+  background-color: var(--color-box-3);
+}
+
+.box4 {
+  flex: 0 0 var(--size-box-2-4-width);
+  height: var(--size-box-2-4-height);
+  font-size: var(--font-size-box-2-4);
+  background-color: var(--color-box-4);
+  transform: translateY(30%);
+}
+
+.box5 {
+  flex: 0 0 var(--size-box-1-5-width);
+  height: var(--size-box-1-5-height);
+  font-size: var(--font-size-box-1-5);
+  background-color: var(--color-box-5);
+  transform: translateY(60%);
+}
