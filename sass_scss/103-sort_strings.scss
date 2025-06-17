@@ -1,24 +1,23 @@
 @use "103-sort_list" as list;
 
-$sorted-list : ();
-$temp : list.$list_to_sort;
+$names-map: (
+  anna: 1,
+  carrie: 2,
+  felicia: 3,
+  john: 4,
+  kim: 5,
+  zoe: 6
+);
 
-@while length($temp) > 0 {
-    $min: nth($unsorted_list, 1); 
-    $index: 1; 
+$sorted-ranks: 1 2 3 4 5 6;
+$sorted-names: ();
 
-    @for $i from 2 through length($unsorted_list) {
-        $current: nth($unsorted_list, $i);
-        @if str-insert("", $current, 0) < str-insert("", $min, 0) {
-        $min: $current;
-        $index: $i;
-        }
+@each $rank in $sorted-ranks {
+  @each $name, $order in $names-map {
+    @if $order == $rank {
+      $sorted-names: append($sorted-names, $name);
     }
-    $sorted_list: append($sorted_list, $min);
-    $unsorted_list: join(
-        slice($unsorted_list, 1, $index - 1),
-        slice($unsorted_list, $index + 1)
-    );
+  }
 }
 
-@debug $sorted-list;
+@debug $sorted-names;
