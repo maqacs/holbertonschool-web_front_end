@@ -1,0 +1,17 @@
+%share {
+    font-size: 12px;
+}
+
+.info {
+    @extend %share;
+}
+
+.success {
+    @extend %share;
+    color : #00FF00;
+}
+
+.warning {
+    @extend %share;
+    color : #FF0000;
+}
