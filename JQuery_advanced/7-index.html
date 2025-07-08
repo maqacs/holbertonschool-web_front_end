@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 1</title>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script type="application/javascript">
+            function createSearchForm() {
+                $("body").append([
+                    $("<input>", {type: "text"}),
+                    $("<input>", {
+                        type: "submit",
+                        on: {
+                            click : function() {
+                                queryWikipedia($("input:nth-of-type(1)").val());
+                            }
+                        }
+                    }),
+                    $("<ul></ul>")
+                ])
+            }
+            function addNewArticle(id, title, snippet) {
+                $("ul").append([
+                    $("<li></li>").append([
+                        $("<p></p>").append([
+                            $("<span></span>", {text: id + " - "}),
+                            $("<b></b>", {text: title})
+                        ]),
+                        $("<p></p>", {html: snippet})
+                    ])
+                ])
+            }
+            function queryWikipedia(search) {
+                const data = {
+                    action: "query",
+                    list: "search",
+                    srsearch: search,
+                    format: "json",
+                    origin: "*" // Required for CORS
+                };
+
+                $.ajax({
+                    url: "https://en.wikipedia.org/w/api.php",
+                    method: "GET",
+                    data: data,
+                    success: function (response) {
+                        const results = response.query.search;
+                        results.forEach(result => {
+                            addNewArticle(result.pageid, result.title, result.snippet);
+                        });
+                    },
+                    error: function () {
+                        console.error("Failed to fetch data from Wikipedia.");
+                    }
+                });
+            }
+            $(document).ready( function() {
+                createSearchForm();
+            })
+        </script>
+
+    </head>
+
+    <body>
+        
+    </body>
+
+</html>
